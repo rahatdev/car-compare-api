@@ -6,3 +6,8 @@ initial get from kbb value
 - immediate costs (per month, per year)
 - actual cost (depreciation,
 - relative cost(compare to another vecicle) . -- i.e how much more money would I lose in the short term and overall if I picked car a vs b . (fuel costs, depreciation, interest, taxes)
+
+
+apis
+[auto-data](https://www.auto-data.net)
+[edmunds](http://developer.edmunds.com/)
