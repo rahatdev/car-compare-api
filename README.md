@@ -18,4 +18,21 @@ apis
 
 TODO:
 
-- 
+- create initial skeleton:
+    * app.js & express
+    * ng client
+
+- Pull list of current cars from api
+- search feature to quickly add cars to compare (i.e typing '2002 accord' should resolve to the correct vehicle)
+- be able to get valuation based on selected car from car value api
+- logic for figuring out monthly, yearly, 3/5/7/10 year cost. 
+- add a second vehicle and compare the two
+- add options for various potential things to factor in
+    * add asset growth (invested remainder cash vs straight cash)
+    * factor in risk-based maintenance (i.e a tacoma will have lot lower vs a dodge ram)
+    * include gas/fueling costs
+    * include projected depreciation
+- finish and clean up front end
+- add tests
+- adjust as per usage and needs
+- deploy
