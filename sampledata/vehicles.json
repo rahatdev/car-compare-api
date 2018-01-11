@@ -1,0 +1,107 @@
+{
+    "data": [{
+        "make": "Toyota",
+        "model": "Prius",
+        "year": 2010,
+        "mpg": {
+            "combined": 50,
+            "city": 51,
+            "highway":49 },
+        "mileage": 178000,
+        "value": {
+            "private": 5000,
+            "trade-in": 3500,
+            "dealer": 7500 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    },{
+        "make": "make",
+        "model": "model",
+        "year": 0,
+        "mpg": {
+            "combined": 0,
+            "city": 0,
+            "highway":0 },
+        "mileage": 0,
+        "value": {
+            "private": 0,
+            "trade-in": 0,
+            "dealer": 0 }
+    }]
+}
