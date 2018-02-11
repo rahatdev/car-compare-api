@@ -1,0 +1,29 @@
+{
+  "name": "car-compare",
+  "version": "0.0.1",
+  "description": "Calculates relative cost of vehicle based on parameters.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahottie/car-compare.git"
+  },
+  "keywords": [
+    "vehicle",
+    "car",
+    "automotive",
+    "cost",
+    "calculator"
+  ],
+  "author": "rahat",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/rahottie/car-compare/issues"
+  },
+  "homepage": "https://github.com/rahottie/car-compare#readme",
+  "devDependencies": {
+    "@angular/cli": "^1.6.8"
+  }
+}
