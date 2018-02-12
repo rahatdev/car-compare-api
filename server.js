@@ -7,8 +7,7 @@ let fuelCost = (vehicle, fuelPrice, milesDriven) => {
 
     let mpg = vehicle.mpg.combined
     
-    return  milesDriven * fuelPrice / mpg
-    
+    return  milesDriven * fuelPrice / mpg    
 }
 let prius = {
     mpg: {
