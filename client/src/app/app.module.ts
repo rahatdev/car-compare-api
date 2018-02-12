@@ -4,13 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListingComponent } from './components/listing/listing.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ListingComponent,
+    VehicleComponent
   ],
   imports: [
     BrowserModule,
