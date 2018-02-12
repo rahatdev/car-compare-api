@@ -24,6 +24,5 @@
   },
   "homepage": "https://github.com/rahottie/car-compare#readme",
   "devDependencies": {
-    "@angular/cli": "^1.6.8"
   }
 }
