@@ -36,3 +36,9 @@ TODO:
 - add tests
 - adjust as per usage and needs
 - deploy
+
+
+
+## ng notes
+- ng new myApp --prefix r6 --style scss --routing
+? how to follow particular folder structure, i.e src/app/components/[component-name], src/app/services/[service-name]
