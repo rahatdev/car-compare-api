@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { GeneralSelectionComponent } from './components/general-selection/general-selection.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { VehicleComponent } from './components/vehicle/vehicle.component';
     AppComponent,
     HomeComponent,
     ListingComponent,
-    VehicleComponent
+    VehicleComponent,
+    GeneralSelectionComponent
   ],
   imports: [
     BrowserModule,
