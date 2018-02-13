@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -20,7 +22,9 @@ import { GeneralSelectionComponent } from './components/general-selection/genera
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

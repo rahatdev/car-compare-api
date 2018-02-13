@@ -1,3 +1,20 @@
-<p>
-  general-selection works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6">
+        <p>Zip Code: <input [(ngModel)]="zipcode" name="zipcode" placeholder="zipcode" type="text"> </p> 
+        <p>Annual Mileage: <input [(ngModel)]="annualMileage" name="annual-mileage" placeholder="Annual Milage" type="text"> </p>
+        <button class="btn btn-outline-info" (click)="onUpdateClick()"> Update </button>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+      <p>RESULT:</p>
+      <p>{{result}}</p>      
+    </div>
+    <div class="col-md-3 col-sm-6">       
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">CALCULATE</button>
+      <button type="button" class="btn btn-secondary">COMPARE</button>
+      <button type="button" class="btn btn-secondary">TRADE</button>
+    </div>
+</div>

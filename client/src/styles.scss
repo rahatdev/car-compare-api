@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootswatch/dist/yeti/_variables.scss";
+// ~ is an alias for your node_modules folder
+@import "~bootswatch/dist/flatly/_variables.scss";
 @import "~bootstrap/scss/bootstrap.scss";
-@import "~bootswatch/dist/yeti/_bootswatch.scss";
+@import "~bootswatch/dist/flatly/_bootswatch.scss";
