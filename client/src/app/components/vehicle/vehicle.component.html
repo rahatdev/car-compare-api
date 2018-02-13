@@ -1,20 +1,194 @@
-<div class="form-group">
-    <select class="custom-select">
-      <option selected="">Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+<div class="container">
+  <!-- Vehicle Selection -->
+  <div class="row">
+    <div class="col-2">
+      <select class="custom-select">
+        <option selected="">Year</option>
+        <option value="1">1999</option>
+        <option value="2">2000</option>
+        <option value="3">2012</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select">
+        <option selected="">Make</option>
+        <option value="1">Toyota</option>
+        <option value="2">Maserati</option>
+        <option value="3">Tesla</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select">
+        <option selected="">Model</option>
+        <option value="1">GranTurismo</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select">
+        <option selected="">Trim</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
   </div>
 
-  <li class="nav-item dropdown show">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Dropdown</a>
-      <div class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </li>
+  <!-- Vehicle Details -->
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-outline-secondary">Options</button>
+    </div>
+    <div class="col-3">
+      <select class="custom-select">
+        <option selected="">Make</option>
+        <option value="1">Toyota</option>
+        <option value="2">Maserati</option>
+        <option value="3">Tesla</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select">
+        <option selected="">Condition</option>
+        <option value="1">Excellent</option>
+        <option value="2">Very Good</option>
+        <option value="3">Sucks Ass</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <input class="form-control" [(ngModel)]="mileage" name="mileage" placeholder="mileage" type="text">
+    </div>
+  </div>
 
+  <!-- Vehicle Cost Breakdown -->
+  <br/>
+  <div class="row">
+    <div class="container">
+
+      <!-- Header Row -->
+      <div class="row">
+        <div class="col-lg">
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 0</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 1</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 2</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 3</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 4</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 5</p>
+        </div>
+      </div>
+
+      <!-- Value -->
+      <div class="row">
+        <div class="col-lg">
+          <p class="text-muted">Value:</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 0</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 1</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 2</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 3</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 4</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 5</p>
+        </div>
+      </div>
+
+      <!-- Fuel -->
+      <div class="row">
+        <div class="col-lg">
+          <p class="text-muted">Fuel:</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 0</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 1</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 2</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 3</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 4</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 5</p>
+        </div>
+      </div>
+
+      <!-- Depreciation  -->
+      <div class="row">
+        <div class="col-lg">
+          <p class="text-muted">Depreciation:</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 0</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 1</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 2</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 3</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 4</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 5</p>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="row">
+        <div class="col-lg">
+            <p class="text-muted">Total:</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 0</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 1</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 2</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 3</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 4</p>
+        </div>
+        <div class="col-lg">
+          <p class="text-muted">YEAR 5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
