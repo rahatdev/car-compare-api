@@ -6,10 +6,10 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { ListingComponent } from './components/listing/listing.component';
-import { VehicleComponent } from './components/vehicle/vehicle.component';
-import { GeneralSelectionComponent } from './components/general-selection/general-selection.component';
+import { HomeComponent } from './home/home.component';
+import { ListingComponent } from './/listing/listing.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { GeneralSelectionComponent } from './general-selection/general-selection.component';
 
 
 @NgModule({
