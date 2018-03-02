@@ -38,11 +38,6 @@ http://docs.3taps.com/search_api.html
 
 
 TODO:
-
-- create initial skeleton:
-    * app.js & express
-    * ng client
-
 - Pull list of current cars from api
 - search feature to quickly add cars to compare (i.e typing '2002 accord' should resolve to the correct vehicle)
 - be able to get valuation based on selected car from car value api
