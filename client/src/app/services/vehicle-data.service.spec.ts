@@ -1,7 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { VehicleDataService, fuelCost } from './vehicle-data.service';
+import { VehicleDataService } from './vehicle-data.service';
 
 describe('VehicleDataService', () => {
+  let service: VehicleDataService;
+  beforeAll(() => {
+    service = new VehicleDataService();
+  })
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [VehicleDataService]
@@ -12,28 +17,48 @@ describe('VehicleDataService', () => {
     expect(service).toBeTruthy();
   }));
 
-  // describe('fuelCost', () => {
-  //   it('should return correct cost', () => {
-  //     const result = fuelCost(30, 15000, 2.90);
-  //     //const expected = 1450;
+  describe('getAllYears', () => {
+    let result;
+    beforeAll(() => {
+      result = service.getAllYears();
+    })
 
-  //     expect(result).toBe(1450);
-  //   })
+    it('should return all correct number of entries', () => {
+      const expectedEntries = new Date().getFullYear() - 1970 + 1;
+      expect(result.length).toBe(49); //for 2018
+      expect(result.length).toBe(expectedEntries);
+    });
+    it('should contain certain years', () => {
+      expect(result).toContain(1970);
+      expect(result).toContain(2000);
+      expect(result).toContain(2018);
+    })
 
-  //   it('should return correct cost', () => {
-  //     const result = fuelCost(42, 15000, 3.12);
-  //     //const expected = 1450;
+  })
 
-  //     expect(result).toBe(1450);
-  //   })
-  // })
 
-  // describe('totalCost', () => {
-    // TODO
-    // Arrange 
-    // Act
-    // Assert
-  // })
+  it('should return all makes', () => {
+
+  })
+
+  it('should return all makes available for specified year', () => {
+    //TODO
+  })
+
+  it('should return all models available for specified make', () => {
+    //TODO
+  })
+
+  it('should return all models available for specified make and year', () => {
+    //TODO
+  })
+
+  it('should return all models aavailable for specified make and year, filtered by vehicle type', () => {
+    //TODO
+  })
+
+
+
 
 });
 

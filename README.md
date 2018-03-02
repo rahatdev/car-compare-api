@@ -8,11 +8,32 @@ initial get from kbb value
 - relative cost(compare to another vecicle) . -- i.e how much more money would I lose in the short term and overall if I picked car a vs b . (fuel costs, depreciation, interest, taxes)
 
 
-apis
+## apis
+
+### Vehicle Data
+- [NHSTA API ](https://vpic.nhtsa.dot.gov/api/#)
+- [carqueryapi](http://www.carqueryapi.com/documentation/api-usage/)
+
+
+### Vehicle Value
+
+
+### Vehicle Listings
+* [marketcheck](https://apidocs.marketcheck.com/#intro)
+Listings for car, not sure the cost per month for basic (has 30 day 20k/mth free evaluation).  Awesome api docs, just unsure of costs.  [demo site](https://www.marketcheck.com/)
 
 [auto-data](https://www.auto-data.net)
 
 [edmunds](http://developer.edmunds.com/)
+
+#### Craigslist
+* Awesome github gist on query params - https://gist.github.com/flodel/2573531 
+* https://fayar.craigslist.org/search/cta?format=rss&query=pontiac+GTO&search_distance=100&postal=72703
+* How do you solve for which craigslist to search for? Is there a general api based on location?
+
+#### 3taps?
+http://docs.3taps.com/search_api.html
+
 
 
 
