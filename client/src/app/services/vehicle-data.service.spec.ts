@@ -32,13 +32,13 @@ describe('VehicleDataService', () => {
       expect(result).toContain(1970);
       expect(result).toContain(2000);
       expect(result).toContain(2018);
-    })
+    });
 
   })
 
 
   it('should return all makes', () => {
-
+    let result;
   })
 
   it('should return all makes available for specified year', () => {
@@ -56,10 +56,6 @@ describe('VehicleDataService', () => {
   it('should return all models aavailable for specified make and year, filtered by vehicle type', () => {
     //TODO
   })
-
-
-
-
 });
 
 
