@@ -50,6 +50,10 @@ describe('CalculatorService', () => {
     expect(result).toBe(14500); // 1500 annual fuel, 2125 annual depreciation, 4 years
   })
 
+  it('should be able to access depreciation data', () => {
+    //TODO
+  })
+
 
 });
 

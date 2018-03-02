@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+//Should htis access vehicle-data directly?
+
 @Injectable()
 export class CalculatorService {
 
