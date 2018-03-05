@@ -1,3 +1,10 @@
-<p>
-  listing works!
-</p>
+<h1>Craigslist Listings</h1>
+<ul>
+  <li *ngFor="let listing of craigslistListings" > {{ listing.make }} - {{ listing.model }}</li>
+</ul>
+
+<table>
+  <tr>
+    <td [attr.colspan]="colspan"></td>
+  </tr>
+</table>

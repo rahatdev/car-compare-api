@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListingService } from './listing.service';
 
 @Component({
   selector: 'app-listing',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listing.component.scss']
 })
 export class ListingComponent implements OnInit {
+  craigslistListings: any[]; //should be vehicle
 
-  constructor() { }
+  constructor(private _listingService: ListingService) { }
 
   ngOnInit() {
+    this.craigslistListings = this._listingService.getCraigslistListings();
   }
 
 }

@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { ListingComponent } from './listing/listing.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { GeneralSelectionComponent } from './general-selection/general-selection.component';
+import { StarComponent } from './shared/star.component';
+
+import { ListingService } from './listing/listing.service';
+import { ConvertToTitleCasePipe } from './shared/title-case.pipe';
 
 
 @NgModule({
@@ -18,7 +22,9 @@ import { GeneralSelectionComponent } from './general-selection/general-selection
     HomeComponent,
     ListingComponent,
     VehicleComponent,
-    GeneralSelectionComponent
+    GeneralSelectionComponent,
+    StarComponent,
+    ConvertToTitleCasePipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,7 @@ import { GeneralSelectionComponent } from './general-selection/general-selection
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ListingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

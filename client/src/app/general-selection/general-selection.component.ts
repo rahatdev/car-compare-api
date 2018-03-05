@@ -11,6 +11,7 @@ export class GeneralSelectionComponent implements OnInit {
   annualMileage: Number;
   percentCity: Number;
   percentHighway: Number;
+  isActive: boolean;
 
   constructor() { }
 
@@ -21,6 +22,11 @@ export class GeneralSelectionComponent implements OnInit {
   onUpdateClick() {
     console.log("zipcode:", this.zipcode)
     console.log("miles:", this.annualMileage)
+  }
+
+  onKeyUp($event){
+    console.log($event);
+    if($event.keyCode === 13) console.log("Enter was pressed");
   }
 
 }
