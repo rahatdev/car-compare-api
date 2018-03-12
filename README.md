@@ -1,4 +1,4 @@
-# vehicle-cost-calc
+# car-compare
 Figures out relative cost of vehicle based on year, model, kbb value, etc to produce cost per year and true total cost in 1/3/5 year period.
 
 
@@ -53,7 +53,9 @@ TODO:
 - adjust as per usage and needs
 - deploy
 
-
+## application structure
+- rxjs --- observables for api data
+- redux for state.  Might be overkill for current scale, but if there is future expansion, the architecture will be able to handle it.
 
 ## ng notes
 - ng new myApp --prefix r6 --style scss --routing
