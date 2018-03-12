@@ -1,19 +1,26 @@
-export class LikeComponent {
-    //private _isClicked = false;
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-    constructor(private _likesCount: number, private _isClicked = false) { }
+@Component({
+    selector: 'app-like',
+    styleUrls:['./like.component.scss'],
+    template: `
+        <span class="glyphicon glyphicon-heart"
+        [class.glyphicon-active]="isLiked"
+        [class.glyphicon-inactive]="!isLiked"></span>
+        <p>{{}}</p>        
+    `
+})
+export class LikeComponent {
+    @Input('isLiked') isLiked: boolean;
+    @Input('likes') likes: number = 0;
+
+
+    constructor() { }
 
     click(): void {
-        this._likesCount += (this._isClicked) ? -1 : 1;
-        this._isClicked = !this._isClicked;
+        this.likes += this.isLiked ? 1 : -1;
+        this.isLiked = !this.isLiked;
     }
 
-    get likes() {
-        return this._likesCount;
-    }
-
-    get isClicked() {
-        return this._isClicked;
-    }
 
 }
