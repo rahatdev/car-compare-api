@@ -21,18 +21,31 @@ export class VehicleDataService {
 
   constructor() { }
 
+  //apiusage:  http://www.carqueryapi.com/documentation/api-usage/ 
+
   getAllYears() {
+    //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears
     let years = [];
     for (let i = 1970; i <= new Date().getFullYear(); i++) years.push(i);
     return years;
   }
 
   getMakes(vehicleType) {
+    //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes&year=2000&sold_in_us=1
     //TODO
   }
 
-  getModelsForMake(make, ) {
+  getModelsForMake(make) {
+    //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make=ford&year=2005&sold_in_us=1&body=SUV
     //TODO
+  }
+
+  getTrim(){
+    //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&[params]
+  }
+
+  getModelDetail(){
+    // https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModel&model=11459
   }
 
 }
