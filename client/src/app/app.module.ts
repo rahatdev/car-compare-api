@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app-routing.module';
+
+import { NgReduxModule, NgRedux} from 'ng2-redux';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -30,7 +31,8 @@ import { ConvertToTitleCasePipe } from './shared/title-case.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule
   ],
   providers: [ListingService],
   bootstrap: [AppComponent]
