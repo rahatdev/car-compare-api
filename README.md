@@ -1,7 +1,6 @@
 # car-compare
 Figures out relative cost of vehicle based on year, model, kbb value, etc to produce cost per year and true total cost in 1/3/5 year period.
 
-
 initial get from kbb value
 - immediate costs (per month, per year)
 - actual cost (depreciation,
@@ -14,9 +13,7 @@ initial get from kbb value
 - [NHSTA API ](https://vpic.nhtsa.dot.gov/api/#)
 - [carqueryapi](http://www.carqueryapi.com/documentation/api-usage/)
 
-
 ### Vehicle Value
-
 
 ### Vehicle Listings
 * [marketcheck](https://apidocs.marketcheck.com/#intro)
@@ -33,9 +30,6 @@ Listings for car, not sure the cost per month for basic (has 30 day 20k/mth free
 
 #### 3taps?
 http://docs.3taps.com/search_api.html
-
-
-
 
 TODO:
 - Pull list of current cars from api
