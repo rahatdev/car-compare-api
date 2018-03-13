@@ -4,7 +4,7 @@ import { VehicleDataService } from './vehicle-data.service';
 describe('VehicleDataService', () => {
   let service: VehicleDataService;
   beforeAll(() => {
-    service = new VehicleDataService();
+    service = new VehicleDataService(null);
   })
 
   beforeEach(() => {

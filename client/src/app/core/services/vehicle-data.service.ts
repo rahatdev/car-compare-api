@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class VehicleDataService {
-
   /*
   Alternative API: carqueryapi
   GetMakes:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes&year=2000&sold_in_us=1
@@ -12,13 +12,18 @@ export class VehicleDataService {
   */
   private _apibase = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd=';
 
-  constructor() { }
+  constructor(
+    private _http: HttpClient
+  ) { }
 
   //apiusage:  http://www.carqueryapi.com/documentation/api-usage/ 
 
   getAllYears() {
     // GetYears:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears
     let query = this._apibase + 'getYears'
+    this._http.get('https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears').subscribe(res => {
+      console.log(res);
+    })
 
     // execute query
     let years = [];

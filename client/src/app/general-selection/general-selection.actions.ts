@@ -5,7 +5,7 @@ import { PhysicalLocation } from "../core/models/physical-location";
 
 export const UPDATE_MILESDRIVEN = 'general/UPDATE_MILESDRIVEN',
     UPDATE_PERCENTHIGHWAY = 'general/UPDATE_PERCENTHIGHWAY',
-    UPDATE_LOCATION = 'general/UPDATE_LOCATION'
+    UPDATE_LOCATION = 'general/UPDATE_LOCATION';
 
 @Injectable()
 export class GeneralSelectionActions {
@@ -17,20 +17,20 @@ export class GeneralSelectionActions {
                 type: UPDATE_MILESDRIVEN,
                 miles
             });
-        } 
+        }
     }
 
-    updatePercentHighway(percentHighway){
-        if(percentHighway && percentHighway > 0) {
+    updatePercentHighway(percentHighway) {
+        if (percentHighway && percentHighway > 0) {
             this.ngRedux.dispatch({
                 type: UPDATE_PERCENTHIGHWAY,
                 percentHighway
             });
-        } 
+        }
     }
 
-    updateLocation(location: PhysicalLocation){
-        if(location){
+    updateLocation(location: PhysicalLocation) {
+        if (location) {
             this.ngRedux.dispatch({
                 type: UPDATE_LOCATION,
                 location

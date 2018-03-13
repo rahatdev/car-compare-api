@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgReduxModule, NgRedux} from 'ng2-redux';
@@ -15,6 +15,9 @@ import { StarComponent } from './shared/star.component';
 
 import { ListingService } from './listing/listing.service';
 import { ConvertToTitleCasePipe } from './shared/title-case.pipe';
+import { VehicleDataService } from './core/services/vehicle-data.service';
+import { VehicleActions } from './vehicle/vehicle.actions';
+import { GeneralSelectionActions } from './general-selection/general-selection.actions';
 
 
 @NgModule({
@@ -31,10 +34,15 @@ import { ConvertToTitleCasePipe } from './shared/title-case.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     NgReduxModule
   ],
-  providers: [ListingService],
+  providers: [
+    ListingService,
+    VehicleDataService
+   // VehicleActions,
+   // GeneralSelectionActions
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
