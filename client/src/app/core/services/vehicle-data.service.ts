@@ -57,23 +57,16 @@ export class VehicleDataService {
           makes.map((make) => {
             let vehicle: Vehicle = {
               make: {
-                makeid: make.make_id,
-                makeName: make.make_display,
-                makeCountry: make.make_country,
+                makeid: make.make_id as string,
+                makeName: make.make_display as string,
+                makeCountry: make.make_country as string,
                 makeIsCommon: (make.make_is_common === '1') ? true : false
               }
             };
             return vehicle;
-          }).filter((make) => {
-            //filter if optional parameter
-            if (onlyCommonMakes) return make.makeIsCommon;
-            else return true;
-          }).filter((make) => {
-            if (makeCountry) return make.makeCountry === makeCountry;
-            else return true;
-          }).map((make) => {
-            observer.next(make);
-          });
+          }).filter((vehicle) => onlyCommonMakes ? vehicle.make.makeIsCommon : true)
+            .filter((vehicle) => makeCountry ? vehicle.make.makeCountry === makeCountry : true)
+            .map((vehicle) => observer.next(vehicle));
           observer.complete();
         }, (err) => {
           this.handleError(err);
