@@ -43,26 +43,42 @@ export class VehicleDataService {
 
   }
 
-  getMakes(year, soldInUS): Observable<Vehicle> {
+  getMakes(year, soldInUS, onlyCommonMakes?: boolean, makeCountry?: string): Observable<Vehicle> {
     //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes&year=2000&sold_in_us=1
     let query = this._apibase + 'getMakes';
     if (year > 0) query += '&year=' + year;
     if (typeof soldInUS === 'boolean') query += soldInUS ? '&sold_in_us=1' : '&sold_in_us=0';
 
     //execute query
-    return this._http.get(query)
-      .map(res => {
-        let raw = res
-
-        return null;
-      }, (err) => {
-        this.handleError(err);
-      })
-
-    //filter results - future
-    // make_is_common
-    // make_country
-
+    return new Observable<Vehicle>((observer) => {
+      this._http.get(query)
+        .map(res => {
+          let makes = res['Makes'];
+          makes.map((make) => {
+            let vehicle: Vehicle = {
+              make: {
+                makeid: make.make_id,
+                makeName: make.make_display,
+                makeCountry: make.make_country,
+                makeIsCommon: (make.make_is_common === '1') ? true : false
+              }
+            };
+            return vehicle;
+          }).filter((make) => {
+            //filter if optional parameter
+            if (onlyCommonMakes) return make.makeIsCommon;
+            else return true;
+          }).filter((make) => {
+            if (makeCountry) return make.makeCountry === makeCountry;
+            else return true;
+          }).map((make) => {
+            observer.next(make);
+          });
+          observer.complete();
+        }, (err) => {
+          this.handleError(err);
+        })
+    })
   }
 
   getModels(make, year, soldInUS, body) {
