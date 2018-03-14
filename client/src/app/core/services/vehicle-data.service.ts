@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Vehicle } from '../models/vehicle';
 
 @Injectable()
 export class VehicleDataService {
@@ -36,21 +37,29 @@ export class VehicleDataService {
     return new Observable<number>((observer) => {
       this._years.forEach((year, i, arr) => {
         observer.next(year);
-        if(i => arr.length -1 ) observer.complete();
+        if (i => arr.length - 1) observer.complete();
       })
     })
 
   }
 
-  getMakes(year, soldInUS, makeIsCommon) {
+  getMakes(year, soldInUS): Observable<Vehicle> {
     //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes&year=2000&sold_in_us=1
     let query = this._apibase + 'getMakes';
     if (year > 0) query += '&year=' + year;
     if (typeof soldInUS === 'boolean') query += soldInUS ? '&sold_in_us=1' : '&sold_in_us=0';
 
     //execute query
+    return this._http.get(query)
+      .map(res => {
+        let raw = res
 
-    //filter results
+        return null;
+      }, (err) => {
+        this.handleError(err);
+      })
+
+    //filter results - future
     // make_is_common
     // make_country
 
