@@ -1,34 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class VehicleDataService {
-  /*
-  Alternative API: carqueryapi
-  GetMakes:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getMakes&year=2000&sold_in_us=1
-  GetModels: https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make=ford&year=2005&sold_in_us=1&body=SUV
-  GetTrims:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&[params]
-  GetModel:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModel&model=11459
-  */
   private _apibase = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd=';
-
+  private _years: number[]; //to avoid unneccesary api calls.
   constructor(
     private _http: HttpClient
   ) { }
 
+  ngOnInit() {
+    this.initializeYears();
+  }
   //apiusage:  http://www.carqueryapi.com/documentation/api-usage/ 
+
+  private initializeYears(): void {
+    let query = this._apibase + 'getYears';
+    this._http.get(query, { observe: 'response' })
+      .subscribe(res => {
+        const raw = res.body['Years'],
+          minYear = raw.min_year || 1972, //arbitray default
+          maxYear = raw.max_year || (new Date()).getFullYear();
+
+        for (let year = minYear; year <= maxYear; year++) {
+          this._years.push(year);
+        }
+      }, err => {
+        this.handleError(err);
+      });
+  }
 
   getAllYears() {
     // GetYears:  https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears
-    let query = this._apibase + 'getYears'
-    this._http.get('https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getYears').subscribe(res => {
-      console.log(res);
+    return new Observable<number>((observer) => {
+      this._years.forEach((year, i, arr) => {
+        observer.next(year);
+        if(i => arr.length -1 ) observer.complete();
+      })
     })
 
-    // execute query
-    let years = [];
-    for (let i = 1970; i <= new Date().getFullYear(); i++) years.push(i);
-    return years;
   }
 
   getMakes(year, soldInUS, makeIsCommon) {
@@ -61,9 +72,15 @@ export class VehicleDataService {
     // https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModel&model=11459
   }
 
+  handleError(err) {
+    //placeholder for now
+    console.log(err);
+    return Observable.throw(err.message);
+  }
+
 }
 
-
+// TODO:
 //fuel cost
 // value
 // depreciation

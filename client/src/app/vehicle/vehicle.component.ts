@@ -7,11 +7,11 @@ import { VehicleActions } from './vehicle.actions';
   templateUrl: './vehicle.component.html',
   styleUrls: ['./vehicle.component.scss']
 })
-export class VehicleComponent implements OnInit {  
+export class VehicleComponent implements OnInit {
 
   constructor(
     private _vehicleDataService: VehicleDataService,
-    //private _vehicleActions: VehicleActions
+    private _vehicleActions: VehicleActions
   ) { }
 
   ngOnInit() {

@@ -18,22 +18,27 @@ describe('VehicleDataService', () => {
   }));
 
   describe('getAllYears', () => {
-    let result;
+    let result = [];
     beforeAll(() => {
-      result = service.getAllYears();
+      service.getAllYears().subscribe((res) => {
+        result.push(res);
+      });
     })
 
-    it('should return all correct number of entries', () => {
-      const expectedEntries = new Date().getFullYear() - 1970 + 1;
-      expect(result.length).toBe(49); //for 2018
-      expect(result.length).toBe(expectedEntries);
+    it('should return multiple entries', () => {
+      expect(result.length).toBeGreaterThan(30); 
     });
+
     it('should contain certain years', () => {
       expect(result).toContain(1970);
       expect(result).toContain(2000);
       expect(result).toContain(2018);
     });
 
+    it('should contain current year as last item', () => {
+      let currentYear = (new Date()).getFullYear();
+      expect(result[result.length - 1]).toBe(currentYear);
+    })
   })
 
 
