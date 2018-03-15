@@ -79,6 +79,9 @@ export class VehicleDataService {
     //TODO
     let query = this._apibase + 'getModels';
     if (make) query += '&make=' + make.toLowerCase;
+    if (year > 0) query += '&year=' + year;
+    if (typeof soldInUS === 'boolean') query += soldInUS ? '&sold_in_us=1' : '&sold_in_us=0';
+    if(body) query += '&body=' + body.toLowerCase;
 
     return new Observable<Vehicle>((observer) => {
       this._http.get(query)
