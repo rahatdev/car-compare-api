@@ -57,10 +57,10 @@ export class VehicleDataService {
           makes.map((make) => {
             let vehicle: Vehicle = {
               make: {
-                makeid: make.make_id as string,
-                makeName: make.make_display as string,
-                makeCountry: make.make_country as string,
-                makeIsCommon: (make.make_is_common === '1') ? true : false
+                makeid: make['make_id'],
+                makeName: make['make_display'],
+                makeCountry: make['make_country'],
+                makeIsCommon: (make['make_is_common'] === '1') ? true : false
               }
             };
             return vehicle;
@@ -79,6 +79,25 @@ export class VehicleDataService {
     //TODO
     let query = this._apibase + 'getModels';
     if (make) query += '&make=' + make.toLowerCase;
+
+    return new Observable<Vehicle>((observer) => {
+      this._http.get(query)
+          .map((res) => {
+            let models = res['Models'];
+            models.map((model) => {
+              let vehicle: Vehicle = {
+                model: model['model_name'],
+                make: {
+                  makeid: model['model_make_id']
+                }
+              };
+              observer.next(vehicle);
+            });
+            observer.complete();
+          }, (err) => {
+            this.handleError(err);
+          })
+    })
 
   }
 
