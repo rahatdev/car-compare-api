@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../core/store';
+import { VehicleDataService } from '../core/services/vehicle-data.service';
 
 
 export const GET_YEARS = 'vehicle/GET_YEARS',
@@ -13,8 +14,16 @@ export const GET_YEARS = 'vehicle/GET_YEARS',
 
 @Injectable()
 export class VehicleActions {
-    constructor(private ngRedux: NgRedux<IAppState>){}
+    constructor(
+        private _ngRedux: NgRedux<IAppState>,
+        private _vehicleDataService: VehicleDataService
+    ){}
 
+    ngOnInit(){
+        this._vehicleDataService.getAllYears().subscribe((res) => {
+            console.log(res);
+        })
+    }
 }
 
             

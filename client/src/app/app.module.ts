@@ -39,8 +39,8 @@ import { GeneralSelectionActions } from './general-selection/general-selection.a
   ],
   providers: [
     ListingService,
-    VehicleDataService
-   // VehicleActions,
+    VehicleDataService,
+    VehicleActions,
    // GeneralSelectionActions
   ],
   bootstrap: [AppComponent]
