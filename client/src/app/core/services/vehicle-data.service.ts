@@ -7,9 +7,14 @@ import { Vehicle } from '../models/vehicle';
 export class VehicleDataService {
   private _apibase = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd=';
   private _years: number[]; //to avoid unneccesary api calls.
-  // not available from api. Need to generate and store.  May need to Generate Dynamically as optional
+
+  // Data below not available from api. Need to generate and store.  May need to Generate Dynamically as optional
   // filter for results.
   private _bodyStyles: string[] = ['Coupe', 'Sedan', 'SUV', 'Pickup', 'Crossover', 'Minivan'];
+  // private _doors: number[] = [];
+  private _drive: string[] = ['Front', 'Rear', 'AWD', '4WD'];
+  private _fuelType: string[] = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
+
 
 
 
@@ -76,11 +81,11 @@ export class VehicleDataService {
           observer.complete();
         }, (err) => {
           this.handleError(err);
-        })
-    })
+        });
+    });
   }
 
-  getModels(make, year, soldInUS, body) {
+  getModels(make, year, soldInUS, body): Observable<Vehicle> {
     //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make=ford&year=2005&sold_in_us=1&body=SUV
     //TODO
     let query = this._apibase + 'getModels';
@@ -105,16 +110,67 @@ export class VehicleDataService {
           observer.complete();
         }, (err) => {
           this.handleError(err);
-        })
-    })
-
+        });
+    });
   }
 
-  getTrim() {
+  getTrim(input: Vehicle, min_year, max_year, fullResults: boolean): Observable<Vehicle> {
     //https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getTrims&[params]
+    let query = this.handleError + 'getTrims';
+    if (input && min_year > this._years[0]) {
+      query += '&min_year=' + min_year;
+      query += '&max_year=' +
+        (max_year > min_year) ? max_year : this._years[this._years.length - 1];
+      query += '&full_results=' +
+        (fullResults) ? 1 : 0;
+      if (input.make.makeid) query += '&make=' + input.make.makeid;
+      if (input.model) query += '&model=' + input.model;
+      if (input.bodyStyle && this._bodyStyles.indexOf(input.bodyStyle) > -1) query += '&body=' + input.bodyStyle;
+      if (input.drive && this._drive.indexOf(input.drive) > -1) query += '&drive=' + input.drive;
+      if (input.engine.fuel && this._fuelType.indexOf(input.engine.fuel) > -1) query += '&fuel_type' + input.engine.fuel;
+
+      return new Observable<Vehicle>((observer) => {
+        this._http.get(query)
+          .map((res) => {
+            let trims = res['Trims'];
+            trims.map((trim) => {
+              let vehicle: Vehicle = {
+                id: trim['model_id'],
+                year: trim['model_year'],
+                make: {
+                  makeid: trim['model_make_id'],
+                  makeName: trim['make_display'],
+                  makeCountry: trim['make_country']
+                },
+                model: trim['model_name'],
+                trim: trim['model_trim'],
+                bodyStyle: trim['model_body'],
+                transmission: trim['model_transmission_type'],
+                drive: trim['model_drive'],
+                seats: trim['model_seats'],
+                doors: trim['model_doors'],
+                mpg:{ //despite it being lkm, the data is actually in mpg. smh
+                  city: trim['model_lkm_city'],  
+                  hwy: trim['model_lkm_hwy'],
+                  mixed: trim['model_lkm_mixed']
+                }
+              };
+              observer.next(vehicle);
+            });
+            observer.complete();
+          }, (err) => {
+            this.handleError(err);
+          })
+      })
+    }
+    else {
+      return null;
+    }
+
   }
 
-  getModelDetail() {
+  // Is this method neccesary with al lthe relevant details provided by above?
+  getModelDetail() { 
     // https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModel&model=11459
   }
 

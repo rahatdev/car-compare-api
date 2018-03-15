@@ -9,9 +9,14 @@ export interface Vehicle {
     }
     model?: string,
     trim?: string,
+    bodyStyle?: string,
+    transmission?: string,
+    drive?: string,
+    seats?: number,
+    doors?: number,
     mpg?: {
         city?: number,
-        hgwy?: number,
+        hwy?: number,
         mixed?: number
     },
     physical?: {
