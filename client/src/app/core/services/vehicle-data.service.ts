@@ -7,6 +7,12 @@ import { Vehicle } from '../models/vehicle';
 export class VehicleDataService {
   private _apibase = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd=';
   private _years: number[]; //to avoid unneccesary api calls.
+  // not available from api. Need to generate and store.  May need to Generate Dynamically as optional
+  // filter for results.
+  private _bodyStyles: string[] = ['Coupe', 'Sedan', 'SUV', 'Pickup', 'Crossover', 'Minivan'];
+
+
+
   constructor(
     private _http: HttpClient
   ) { }
@@ -81,25 +87,25 @@ export class VehicleDataService {
     if (make) query += '&make=' + make.toLowerCase;
     if (year > 0) query += '&year=' + year;
     if (typeof soldInUS === 'boolean') query += soldInUS ? '&sold_in_us=1' : '&sold_in_us=0';
-    if(body) query += '&body=' + body.toLowerCase;
+    if (body) query += '&body=' + body.toLowerCase;
 
     return new Observable<Vehicle>((observer) => {
       this._http.get(query)
-          .map((res) => {
-            let models = res['Models'];
-            models.map((model) => {
-              let vehicle: Vehicle = {
-                model: model['model_name'],
-                make: {
-                  makeid: model['model_make_id']
-                }
-              };
-              observer.next(vehicle);
-            });
-            observer.complete();
-          }, (err) => {
-            this.handleError(err);
-          })
+        .map((res) => {
+          let models = res['Models'];
+          models.map((model) => {
+            let vehicle: Vehicle = {
+              model: model['model_name'],
+              make: {
+                makeid: model['model_make_id']
+              }
+            };
+            observer.next(vehicle);
+          });
+          observer.complete();
+        }, (err) => {
+          this.handleError(err);
+        })
     })
 
   }
