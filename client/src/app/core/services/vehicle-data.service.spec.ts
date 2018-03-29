@@ -17,6 +17,26 @@ describe('VehicleDataService', () => {
     expect(service).toBeTruthy();
   }));
 
+  describe('filterResponse', () => {
+    it('should return JSON', () => {
+      let jsonObj = '{ "Makes": [{ "make_id": "ac" }, { "make_id": "Toyota" }] }';
+      let inputs = [
+        '?(' + jsonObj + ');',
+        jsonObj,
+        'catyl' + jsonObj,
+        jsonObj + 'blatty',
+        'catyl' + jsonObj + 'blat'
+      ];
+      let expectedProperty = 'Makes';
+      inputs.forEach((input) => {
+        let actual = service.filterResponse(input)
+        expect(actual).not.toBeNull();
+        expect(actual['Makes']).toBeTruthy();
+        expect(actual['Makes'].length).toBeGreaterThan(0);
+      })
+    })
+  })
+
   describe('getAllYears', () => {
     let result = [];
     beforeAll(() => {
@@ -26,7 +46,7 @@ describe('VehicleDataService', () => {
     })
 
     it('should return multiple entries', () => {
-      expect(result.length).toBeGreaterThan(30); 
+      expect(result.length).toBeGreaterThan(30);
     });
 
     it('should contain certain years', () => {

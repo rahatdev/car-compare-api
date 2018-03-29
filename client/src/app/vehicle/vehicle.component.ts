@@ -12,17 +12,27 @@ import { IAppState } from '../core/store';
 export class VehicleComponent implements OnInit {
 
   constructor(
-    private _ngRedux: NgRedux<IAppState>,
-    private _vehicleDataService: VehicleDataService,
-    private _vehicleActions: VehicleActions
+    private ngRedux: NgRedux<IAppState>,
+    private vehicleDataService: VehicleDataService,
+    private vehicleActions: VehicleActions
   ) {
     // this._ngRedux.subscribe(() => {
 
     // })
-   }
+  }
 
   ngOnInit() {
     //this._vehicleDataService.getAllYears();
+    console.log('vehicle initialized...');
+    // this.vehicleDataService.getMakes()
+    //   .subscribe(
+    //     (res) => {
+    //       console.log(res);
+    //     }
+    //   )
+
+    this.vehicleDataService.getAllYears()
+      .subscribe(res => console.log(res))
   }
 
 

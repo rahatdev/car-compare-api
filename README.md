@@ -14,6 +14,7 @@ initial get from kbb value
 - [carqueryapi](http://www.carqueryapi.com/documentation/api-usage/)
 
 ### Vehicle Value
+- Seems like the only free option is to write a scraper service.
 
 ### Vehicle Listings
 * [marketcheck](https://apidocs.marketcheck.com/#intro)
