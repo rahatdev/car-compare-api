@@ -18,6 +18,7 @@ import { ConvertToTitleCasePipe } from './shared/title-case.pipe';
 import { VehicleDataService } from './core/services/vehicle-data.service';
 import { VehicleActions } from './vehicle/vehicle.actions';
 import { GeneralSelectionActions } from './general-selection/general-selection.actions';
+import { NadaValueService } from './core/services/nada-value.service';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { GeneralSelectionActions } from './general-selection/general-selection.a
   providers: [
     ListingService,
     VehicleDataService,
+    NadaValueService,
     VehicleActions,
    // GeneralSelectionActions
   ],

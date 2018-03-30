@@ -3,7 +3,7 @@ import { Vehicle } from "../models/vehicle";
 
 export interface IVehicleDataService {
     getAllYears();
-    getMakes(): Observable<any>;
+    getMakes();
     getModels(make, year?): Observable<Vehicle>;
     getTrim(input): Observable<Vehicle>;
     getValue(input: Vehicle): Observable<any>;
