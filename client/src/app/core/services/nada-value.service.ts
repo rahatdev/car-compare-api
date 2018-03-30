@@ -20,7 +20,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class NadaValueService implements IVehicleDataService {
-  private apibase = 'http://www.nadaguides.com/Cars/';
+  private apibase = 'http://www.nadaguides.com/Cars';
   constructor(private http: HttpClient) { }
 
   getAllYears() {
@@ -28,9 +28,9 @@ export class NadaValueService implements IVehicleDataService {
   }
 
   // future add year filter
+  // rewrite as functional
   getMakes() {
-    let query = this.apibase + 'Manufacturers';
-    console.log('Get Makes called...');
+    let query = `${this.apibase}/Manufacturers`;
     this.http.get(query, { responseType: 'text' })
       .subscribe(
         (res) => {
@@ -45,12 +45,18 @@ export class NadaValueService implements IVehicleDataService {
           let subroot = 'title="';
           let subrootLength = subroot.length;
 
-          let currentIndex = 12
+          let currentIndex = 0;
           // cycle logic below while currentIndex > 0
           while (currentIndex >= 0) {
-            currentIndex = res.indexOf(root + rootLength);
+            currentIndex = res.indexOf(root);
+            if (currentIndex > 0) currentIndex += rootLength;
+            else break
+
+            //get makeid
             res = res.substring(currentIndex);
             let makeid = res.substring(0, res.indexOf('"'));
+
+            // get make
             res = res.substring(res.indexOf(subroot) + subrootLength);
             let vehicle: Vehicle = {
               make: {
@@ -59,15 +65,23 @@ export class NadaValueService implements IVehicleDataService {
               }
             };
             makes.push(vehicle);
-            console.log('---  ', currentIndex);
-            console.log(makes);
           }
 
+          console.log('finish line!');
+          console.log(makes);
           /// end cycle
         });
   }
-  getModels(make: any, year?): Observable<Vehicle> {
-    throw new Error("Method not implemented.");
+  getModels(make: any, year: number){
+    if(make && year > 0){
+      let query = `${this.apibase}/${year}/${make}`;
+      this.http.get(query, {responseType: 'text'})
+        .subscribe(
+          (res) => {
+
+          }
+        )
+    } 
   }
   getTrim(input: any): Observable<Vehicle> {
     throw new Error("Method not implemented.");
@@ -77,3 +91,5 @@ export class NadaValueService implements IVehicleDataService {
   }
 
 }
+
+
