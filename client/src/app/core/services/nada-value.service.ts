@@ -85,10 +85,10 @@ export class NadaValueService implements IVehicleDataService {
       //     }
       //   )
       let res: string = acura2012res;
-      res.split('')
-        .map()
-        .filter()
-        .reduce()
+      // res.split('')
+      //   .map()
+      //   .filter()
+      //   .reduce()
 
 
     }
