@@ -3,6 +3,7 @@ import { IVehicleDataService } from './ivehicle-data-service';
 import { Observable } from 'rxjs/Observable';
 import { Vehicle } from '../models/vehicle';
 import { HttpClient } from '@angular/common/http';
+import { acura2012res } from '../sample/acura2012res';
 
 /*
   - Static data such as years and makes, should only run once and populate the state. 
@@ -21,6 +22,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class NadaValueService implements IVehicleDataService {
   private apibase = 'http://www.nadaguides.com/Cars';
+  //private res1 = acura2012res;
+
   constructor(private http: HttpClient) { }
 
   getAllYears() {
@@ -72,16 +75,23 @@ export class NadaValueService implements IVehicleDataService {
           /// end cycle
         });
   }
-  getModels(make: any, year: number){
-    if(make && year > 0){
-      let query = `${this.apibase}/${year}/${make}`;
-      this.http.get(query, {responseType: 'text'})
-        .subscribe(
-          (res) => {
+  getModels(make: any, year: number) {
+    if (make && year > 0) {
+      // let query = `${this.apibase}/${year}/${make}`;
+      // this.http.get(query, {responseType: 'text'})
+      //   .subscribe(
+      //     (res) => {
 
-          }
-        )
-    } 
+      //     }
+      //   )
+      let res: string = acura2012res;
+      res.split('')
+        .map()
+        .filter()
+        .reduce()
+
+
+    }
   }
   getTrim(input: any): Observable<Vehicle> {
     throw new Error("Method not implemented.");
