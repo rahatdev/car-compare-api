@@ -7,7 +7,10 @@ export interface Vehicle {
         makeIsCommon?: boolean,
         makeCountry?: string
     }
-    model?: string,
+    model?: {
+        modelid?: any,
+        modelname?: string
+    }
     trim?: string,
     bodyStyle?: string,
     transmission?: string,

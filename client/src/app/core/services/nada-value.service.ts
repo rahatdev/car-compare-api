@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { IVehicleDataService } from './ivehicle-data-service';
 import { Observable } from 'rxjs/Observable';
 import { Vehicle } from '../models/vehicle';
@@ -75,20 +75,59 @@ export class NadaValueService implements IVehicleDataService {
           /// end cycle
         });
   }
-  getModels(make: any, year: number) {
-    if (make && year > 0) {
-      // let query = `${this.apibase}/${year}/${make}`;
-      // this.http.get(query, {responseType: 'text'})
-      //   .subscribe(
-      //     (res) => {
+  getModels(makename: string, year: number) {
+    if (makename && year > 0) {
+      let query = `${this.apibase}/${year}/${makename}`;
+      console.log(`calling ${query}...`);
+      this.http.get(query, { responseType: 'text' })
+        .subscribe(
+          (res) => {
+            let models = [];
+            let start = 'js-ad-module row model-image-list__row';
+            let end = '<div class="row make-header visible-xs">'
 
-      //     }
-      //   )
-      let res: string = acura2012res;
-      // res.split('')
-      //   .map()
-      //   .filter()
-      //   .reduce()
+            res = res.substr(res.indexOf(start), res.indexOf(end));
+
+            //console.log(res)
+
+            let root = `/Cars/${year}/${makename}/`;
+            let subroot = 'title="';
+
+            let rootLength = root.length;
+            let subrootLength = subroot.length;
+
+            let currentIndex = 0;
+            while (currentIndex >= 0) {
+              currentIndex = res.indexOf(root);
+              if (currentIndex > 0) currentIndex += rootLength;
+              else break;
+             
+              res = res.substring(currentIndex);
+              let modelid = res.substring(0, res.indexOf('"'));
+              res = res.substring(res.indexOf(subroot) + subrootLength);
+              let modelname = res.substring(0, res.indexOf('"'));
+              let vehicle: Vehicle = {
+                make: {
+                  makeName: makename
+                },
+                model: {
+                  modelid: modelid,
+                  modelname: modelname
+                }
+              }
+              models.push(vehicle);
+              if (models.length > 35) return;
+            }
+            console.log(models);
+            //console.log(res);
+
+          }
+        )
+      // let res: string = acura2012res;
+      // // res.split('')
+      // //   .map()
+      // //   .filter()
+      // //   .reduce()
 
 
     }
@@ -99,6 +138,7 @@ export class NadaValueService implements IVehicleDataService {
   getValue(input: Vehicle): Observable<any> {
     throw new Error("Method not implemented.");
   }
+
 
 }
 
