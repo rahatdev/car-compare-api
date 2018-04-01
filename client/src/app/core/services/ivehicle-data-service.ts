@@ -6,5 +6,5 @@ export interface IVehicleDataService {
     getMakes();
     getModels(make, year?);//: Observable<Vehicle>;
     getTrim(input): Observable<Vehicle>;
-    getValue(input: Vehicle): Observable<any>;
+    getValue(input: Vehicle);//: Observable<any>;
 }

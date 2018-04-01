@@ -12,9 +12,8 @@
     <div class="col-3">
       <select class="custom-select">
         <option selected="">Make</option>
-        <option value="1">Toyota</option>
-        <option value="2">Maserati</option>
-        <option value="3">Tesla</option>
+        <option *ngFor="let make of makes">
+          {{make.make.makeName}}
       </select>
     </div>
     <div class="col-3">

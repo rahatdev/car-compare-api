@@ -11,6 +11,7 @@ import { NadaValueService } from '../core/services/nada-value.service';
   styleUrls: ['./vehicle.component.scss']
 })
 export class VehicleComponent implements OnInit {
+  makes;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -26,8 +27,14 @@ export class VehicleComponent implements OnInit {
   ngOnInit() {
     console.log('vehicle initialized...');
 
-    this.nadaValueService.getMakes();
-    this.nadaValueService.getModels('Hyundai', 2012);
+    this.nadaValueService.getMakes()
+      .subscribe(
+        (res) => {
+          this.makes = res;
+          console.log(res);
+        });
+    //.subscribe(res => console.log(res));
+    //this.nadaValueService.getModels('Hyundai', 2012);
   }
 
 

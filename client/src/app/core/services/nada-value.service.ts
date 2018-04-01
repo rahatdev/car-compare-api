@@ -32,10 +32,10 @@ export class NadaValueService implements IVehicleDataService {
 
   // future add year filter
   // rewrite as functional
-  getMakes() {
+  getMakes(): Observable<any> {
     let query = `${this.apibase}/Manufacturers`;
-    this.http.get(query, { responseType: 'text' })
-      .subscribe(
+    return this.http.get(query, { responseType: 'text' })
+      .map(
         (res) => {
           let makes = []; // testing
           // cut above 'Select A Car Manufacturer'
@@ -70,9 +70,7 @@ export class NadaValueService implements IVehicleDataService {
             makes.push(vehicle);
           }
 
-          console.log('finish line!');
-          console.log(makes);
-          /// end cycle
+          return makes;
         });
   }
   getModels(makename: string, year: number) {
@@ -100,9 +98,9 @@ export class NadaValueService implements IVehicleDataService {
               currentIndex = res.indexOf(root);
               if (currentIndex > 0) currentIndex += rootLength;
               else break;
-             
+
               res = res.substring(currentIndex);
-              let modelid = res.substring(0, res.indexOf('"'));              
+              let modelid = res.substring(0, res.indexOf('"'));
               res = res.substring(res.indexOf(subroot) + subrootLength);
               let modelname = res.substring(0, res.indexOf('"'));
               let vehicle: Vehicle = {
@@ -117,7 +115,7 @@ export class NadaValueService implements IVehicleDataService {
               models.push(vehicle);
 
               currentIndex = res.indexOf(start)
-              if(currentIndex > 0) res = res.substring(currentIndex);              
+              if (currentIndex > 0) res = res.substring(currentIndex);
             }
             console.log(models);
             //console.log(res);
@@ -136,8 +134,23 @@ export class NadaValueService implements IVehicleDataService {
   getTrim(input: any): Observable<Vehicle> {
     throw new Error("Method not implemented.");
   }
-  getValue(input: Vehicle): Observable<any> {
-    throw new Error("Method not implemented.");
+  getValue(input: Vehicle) {
+    if (!input.year || input.year < 1) return new Error('input.year must be a number > 0');
+    if (!input.make.makeid) return new Error('makeid must be passed');
+    if (!input.model.modelid) return new Error('modelid must be passed in');
+    if (!input.trim) return new Error('trim must be passed in.');
+
+    let query =
+      `${this.apibase}/${input.year}/${input.make.makeid}/${input.model.modelid}/${input.trim}/Values`;
+
+    this.http.get(query, { responseType: 'text' })
+      .subscribe(
+        (res) => {
+
+        }
+      )
+
+
   }
 
 
