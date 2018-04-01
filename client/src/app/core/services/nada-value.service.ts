@@ -84,14 +84,13 @@ export class NadaValueService implements IVehicleDataService {
           (res) => {
             let models = [];
             let start = 'js-ad-module row model-image-list__row';
-            let end = '<div class="row make-header visible-xs">'
+            let end = '<div class="row make-header visible-xs">';
 
-            res = res.substr(res.indexOf(start), res.indexOf(end));
+            res = res.substr(res.indexOf(start) + start.length, res.indexOf(end));
 
             //console.log(res)
-
             let root = `/Cars/${year}/${makename}/`;
-            let subroot = 'title="';
+            let subroot = `title="${year} ${makename} `;
 
             let rootLength = root.length;
             let subrootLength = subroot.length;
@@ -103,7 +102,7 @@ export class NadaValueService implements IVehicleDataService {
               else break;
              
               res = res.substring(currentIndex);
-              let modelid = res.substring(0, res.indexOf('"'));
+              let modelid = res.substring(0, res.indexOf('"'));              
               res = res.substring(res.indexOf(subroot) + subrootLength);
               let modelname = res.substring(0, res.indexOf('"'));
               let vehicle: Vehicle = {
@@ -116,7 +115,9 @@ export class NadaValueService implements IVehicleDataService {
                 }
               }
               models.push(vehicle);
-              if (models.length > 35) return;
+
+              currentIndex = res.indexOf(start)
+              if(currentIndex > 0) res = res.substring(currentIndex);              
             }
             console.log(models);
             //console.log(res);

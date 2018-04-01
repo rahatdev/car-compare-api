@@ -26,7 +26,8 @@ export class VehicleComponent implements OnInit {
   ngOnInit() {
     console.log('vehicle initialized...');
 
-    this.nadaValueService.getModels('Ford', 2012);
+    this.nadaValueService.getMakes();
+    this.nadaValueService.getModels('Hyundai', 2012);
   }
 
 
